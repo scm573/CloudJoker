@@ -27,8 +27,9 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile(name:'jokedisplay-debug', ext:'aar')
-    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile(name: 'jokedisplay-debug', ext: 'aar')
     // Added for AdMob
-    compile 'com.google.android.gms:play-services:7.3.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.google.android.gms:play-services:8.4.0'
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }
