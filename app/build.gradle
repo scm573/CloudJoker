@@ -18,6 +18,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.adsupported.free"
+        }
+        paid {
+            applicationId "com.udacity.gradle.adsupported.paid"
+        }
+    }
 }
 
 repositories {
@@ -34,4 +42,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.android.support:multidex:1.0.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
+    testCompile 'junit:junit:4.12'
 }

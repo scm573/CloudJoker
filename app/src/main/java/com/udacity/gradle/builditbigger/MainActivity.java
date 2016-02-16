@@ -40,6 +40,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "not use"));
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Not use"));
     }
 }

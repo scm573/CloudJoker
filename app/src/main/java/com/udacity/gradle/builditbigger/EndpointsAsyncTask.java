@@ -11,7 +11,6 @@ import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.joker.backend.myApi.MyApi;
 import com.udacity.gradle.jokedisplay.JokeActivity;
-import com.udacity.gradle.jokes.Joker;
 
 import java.io.IOException;
 
@@ -21,6 +20,7 @@ import java.io.IOException;
 public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
+    private String stringForTesting;
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
@@ -43,17 +43,14 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         }
 
         context = params[0].first;
-        String name = params[0].second;
+//        stringForTesting = params[0].second;
 
-//        try {
-//            return myApiService.sayHi(name).execute().getData();
-//        } catch (IOException e) {
-//            return e.getMessage();
-//        }
-
-        Joker joker = new Joker();
-        String joke = joker.getJoke();
-        return joke;
+        try {
+            stringForTesting = myApiService.tellJoke().execute().getData();
+            return stringForTesting;
+        } catch (IOException e) {
+            return e.getMessage();
+        }
     }
 
     @Override
@@ -62,5 +59,9 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         Intent intent = new Intent(context, newJokeActivity.getClass());
         intent.putExtra(JokeActivity.JOKE_KEY, result);
         context.startActivity(intent);
+    }
+
+    public String getStringForTesting() {
+        return stringForTesting;
     }
 }
